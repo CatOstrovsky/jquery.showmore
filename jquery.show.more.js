@@ -8,26 +8,27 @@ jQuery.fn.extend({
             var maxHeightString = parseInt(limit),
             maxHeightPx = parseInt($(e).css("lineHeight"))*maxHeightString,
             height = $(e).outerHeight(false);
-
             $(e).data("original-height", $(e).outerHeight(true));
 
-            if(height > maxHeightPx)
+            if(height > maxHeightPx){
                 $(e).css({height:maxHeightPx,overflow:"hidden"});
+               
 
-            var showMore = $("<a>").text("Показать полностью").attr({class:"showMorer"}).bind("click", function(){
-                
-                $(e).animate({
-                    height: $(e).data("original-height")
-                }, 500, function() {
-                   $(this).css({
-                       height: 'auto'
-                   });
+                var showMore = $("<a>").text("Показать полностью").attr({class:"showMorer"}).bind("click", function(){
+                    
+                    $(e).animate({
+                        height: $(e).data("original-height")
+                    }, 500, function() {
+                       $(this).css({
+                           height: 'auto'
+                       });
+                    })
+
+                    $(this).remove();
                 })
 
-                $(this).remove();
-            })
-
-            $(e).after(showMore);
+                $(e).after(showMore);
+            }
 
         })
 
