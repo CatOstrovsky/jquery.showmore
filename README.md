@@ -1,0 +1,1 @@
+Use $("#props").showMore(8);
